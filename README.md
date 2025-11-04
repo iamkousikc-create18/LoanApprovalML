@@ -132,3 +132,11 @@ http://127.0.0.1:8000/docs (Swagger UI)
 
 This project successfully combines Machine Learning and FastAPI to build a real-time Loan Approval Prediction System. With 98% accuracy and API integration, it can be used in financial services for faster and automated loan decisions.
 
+---
+
+✍ Author
+
+👤 Kousik Chakraborty
+📧 Email: www.kousik.c.in@gmail.com
+🔗 GitHub Profile: https://github.com/iamkousikc-create18
+🔗 Project Repository: https://github.com/iamkousikc-create18/LoanApprovalML
