@@ -1,38 +1,42 @@
 🏦 Loan Approval Prediction using Machine Learning & FastAPI
 
-✅ Project Overview
+📌 Project Overview
 
-This project predicts whether a loan application should be approved or rejected based on applicant financial information using machine learning algorithms. After training multiple models and evaluating their performance, the best model with 98% accuracy was saved using Pickle and deployed using FastAPI for real-time API-based predictions.
+This project predicts whether a loan application should be approved based on applicant details such as income, credit history, employment status, loan amount, assets, and more.
+Multiple machine learning algorithms were trained, compared, and the best-performing model (98% accuracy) was saved using Pickle.
+The model is deployed using FastAPI for real-time loan approval prediction via API.
+During preprocessing, both StandardScaler and MinMaxScaler were applied for feature scaling to improve model accuracy and stability.
 
 
 ---
 
-📚 Technologies Used
+🛠 Technologies Used
 
 Language: Python
+Deployment Framework: FastAPI, Uvicorn
 Libraries:
 
-Data Processing – pandas, numpy
+Data Handling – pandas, numpy
 
-Visualization – matplotlib, seaborn
+Data Visualization – matplotlib, seaborn
 
-Model Building – scikit-learn
+Feature Scaling – StandardScaler, MinMaxScaler
+
+Machine Learning – scikit-learn
 
 Model Saving – pickle
 
-Deployment – FastAPI, uvicorn
-
 
 
 ---
 
-🤖 Machine Learning Models Applied
+🤖 Machine Learning Models Used
 
 Logistic Regression
 
-Decision Tree
+Decision Tree Classifier
 
-Random Forest
+Random Forest Classifier
 
 Support Vector Classifier (SVC)
 
@@ -47,71 +51,74 @@ Bagging Classifier
 Stacking Classifier
 
 
-Among these, the best performing model was selected and saved as loan.pkl.
+The best model was chosen after evaluation and saved as loan.pkl.
 
 
 ---
 
-📊 Project Workflow
+📊 Workflow
 
-1. Data Loading & Cleaning: Handled missing values, encoded categorical features, and removed duplicates.
+1. Data Collection & Cleaning
 
+Loaded dataset using pandas
 
-2. Exploratory Data Analysis (EDA): Visualized feature relationships using heatmaps, histograms, boxplots, etc.
-
-
-3. Model Training: Trained different classification algorithms and ensemble techniques.
+Handled missing values, duplicates, and encoded categorical variables
 
 
-4. Evaluation: Used Accuracy, Confusion Matrix, and Classification Report to compare models.
+
+2. Feature Scaling
+✅ Applied StandardScaler for models sensitive to feature distribution (SVM, Logistic Regression, KNN)
+✅ Applied MinMaxScaler for normalization where values were brought between 0 and 1
+
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+ss = StandardScaler()
+X_ss = ss.fit_transform(X)
+
+ms = MinMaxScaler()
+X_ms = ms.fit_transform(X)
 
 
-5. Model Saving:
+3. Model Training & Evaluation
 
+Trained multiple classifiers
+
+Evaluated using accuracy, confusion matrix, and classification report
+
+
+
+4. Model Saving
+
+import pickle
 pickle.dump(best_model, open('loan.pkl', 'wb'))
 
 
-6. FastAPI Deployment: Loaded pickle model and created API endpoints to accept user input and return loan approval results.
+5. FastAPI Deployment
+
+Loaded saved model using Pickle
+
+Created API routes:
+
+/ → Welcome message
+
+/predict → Takes input and returns “Approved” or “Rejected”
 
 
-
-
----
-
-🖥 FastAPI Deployment (loan.py) – Summary
-
-/ → Home route: Displays project welcome message.
-
-/predict → POST API: Accepts input such as gender, income, loan amount, education, employment status, credit history, asset values, etc.
-
-Loads trained model using:
-
-classifier = pickle.load(open("loan.pkl", "rb"))
-
-Returns response:
-
-"Approved" if prediction is 1
-
-"Rejected" if prediction is 0
-
-
-
-Run the API using:
+Run server using:
 
 uvicorn loan:app --reload
 
-Access the API documentation at:
-http://127.0.0.1:8000/docs (Swagger UI)
+
+
 
 
 ---
 
 📁 Project Structure
 
-├── loan.py                  # FastAPI deployment file  
-├── loan.pkl                 # Saved ML model  
-├── loan_approval_dataset.csv              # Dataset used  
-├── loanApproval.ipynb      # Training & evaluation code  
+├── loan.py               # FastAPI deployment  
+├── loan.pkl              # Saved ML model  
+├── loanApproval.ipynb   # Model training notebook  
+├── loan_approval_dataset.csv  
 ├── requirements.txt  
 ├── README.md
 
@@ -120,18 +127,17 @@ http://127.0.0.1:8000/docs (Swagger UI)
 
 🚀 Future Enhancements
 
-✔ Add Streamlit/HTML frontend
-✔ Connect database to store user requests
-✔ Deploy on Render / Railway / AWS
-✔ Add hyperparameter tuning for improvement
+✔ Deploy on Render/Railway/AWS
+✔ Add Streamlit/Flask frontend
+✔ Use database to store user requests
+✔ Apply hyperparameter tuning using GridSearchCV
 
 
 ---
 
-📌 Conclusion
+✅ Conclusion
 
-This project successfully combines Machine Learning and FastAPI to build a real-time Loan Approval Prediction System. With 98% accuracy and API integration, it can be used in financial services for faster and automated loan decisions.
-
+This project demonstrates a complete pipeline from data preprocessing (StandardScaler + MinMaxScaler), ML model training, evaluation, saving with pickle, and FastAPI deployment. With 98% accuracy and API integration, it provides an efficient and scalable loan approval prediction system.
 ---
 
 ✍ Author
