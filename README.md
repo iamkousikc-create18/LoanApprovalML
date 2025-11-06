@@ -132,7 +132,15 @@ uvicorn loan:app --reload
 ✔ Use database to store user requests
 ✔ Apply hyperparameter tuning using GridSearchCV
 
+---
 
+🎥 Demo Video
+
+You can watch the project in action here:
+
+▶ [Click to watch Loan.mp4](./Loan.mp4)
+
+Or download directly from this repository.
 ---
 
 ✅ Conclusion
